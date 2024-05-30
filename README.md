@@ -1,96 +1,51 @@
-# Obsidian Sample Plugin
+# Obsidian Deliberate practice plugin
 
-This is a sample plugin for Obsidian (https://obsidian.md).
+This is a sample plugin to use deliberate practice in obsidian
 
-This project uses Typescript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in Typescript Definition format, which contains TSDoc comments describing what it does.
+## Introduction
 
-**Note:** The Obsidian API is still in early alpha and is subject to change at any time!
+This project will record the duration of your deliberate practice target results and feedback to the specified directory, so as to ensure that the results of deliberate practice are recorded to improve efficiency.
+**Note:**  Set your dir path in settings!！！
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open Sample Modal" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and output 'click' to the console.
-- Registers a global interval which logs 'setInterval' to the console.
+This project use Pomdoro Timer from [Pomodoro Timer for Obsidian](https://github.com/eatgrass/obsidian-pomodoro-timer/tree/master) 
 
-## First time developing plugins?
+## Features
 
-Quick starting guide for new plugin devs:
+- **Pomodoro Timer**: A customizable timer that follows the Pomodoro Technique, with options for work and break intervals.
+- **Session Tracking**: Keeps a log of completed sessions, helping users track their practice habits and progress.
+- **Goal Logging**: Logs your goal, start time, result, and feedback for each session in a designated file.
+- **Customizable Settings**: Allows users to set custom durations for work and break intervals, and the number of intervals before a longer break.
+- **Integration with Obsidian**: Seamlessly works within the Obsidian environment, allowing you to focus on your notes and tasks without needing to switch applications.
+- **Customizable Log** You can decide you log file in Timer.ts
 
-- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.
-- Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
-- Clone your repo to a local development folder. For convenience, you can place this folder in your `.obsidian/plugins/your-plugin-name` folder.
-- Install NodeJS, then run `npm i` in the command line under your repo folder.
-- Run `npm run dev` to compile your plugin from `main.ts` to `main.js`.
-- Make changes to `main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
-- Reload Obsidian to load the new version of your plugin.
-- Enable plugin in settings window.
-- For updates to the Obsidian API run `npm update` in the command line under your repo folder.
+## Usage
 
-## Releasing new releases
+1. **Start a Session**:
+    - Click on the Pomodoro Timer icon in the Obsidian sidebar to open the timer interface.
+    - Set your desired work and break intervals in the settings if you haven't already.
+    - Enter your goal for the session in the provided input field.
+    - Press the "Start" button to begin your first Pomodoro interval.
 
-- Update your `manifest.json` with your new version number, such as `1.0.1`, and the minimum Obsidian version required for your latest release.
-- Update your `versions.json` file with `"new-plugin-version": "minimum-obsidian-version"` so older versions of Obsidian can download an older version of your plugin that's compatible.
-- Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix `v`. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
-- Upload the files `manifest.json`, `main.js`, `styles.css` as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
-- Publish the release.
+2. **Log Your Progress**:
+    - At the end of each session or reset timer, record your result and provide feedback in the input fields.
+    - The plugin will log your goal, start time, result, and feedback in a designated file within your vault.
 
-> You can simplify the version bump process by running `npm version patch`, `npm version minor` or `npm version major` after updating `minAppVersion` manually in `manifest.json`.
-> The command will bump version in `manifest.json` and `package.json`, and add the entry for the new version to `versions.json`
+3. **Review Sessions**:
+    - View your logged sessions in the specified file to reflect on your progress and adjust your practice techniques as needed.
+  
 
-## Adding your plugin to the community plugin list
+4. **Change Mode**:
+   - Change you clock mode with timer mode in commadn line or just set break to 0 
+  
+## Settings
+  - you need enter you file path in settings first
 
-- Check https://github.com/obsidianmd/obsidian-releases/blob/master/plugin-review.md
-- Publish an initial version.
-- Make sure you have a `README.md` file in the root of your repo.
-- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.
+## Contributing
+Contributions are welcome! If you have suggestions for improvements or have found a bug, please open an issue or submit a pull request on the [GitHub repository](https://github.com/yxheartipp/obsidian-deliberate-practice).
 
-## How to use
+## License
 
-- Clone this repo.
-- Make sure your NodeJS is at least v16 (`node --version`).
-- `npm i` or `yarn` to install dependencies.
-- `npm run dev` to start compilation in watch mode.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/yourusername/obsidian-deliberate-practice-pomodoro/blob/main/LICENSE) file for details.
 
-## Manually installing the plugin
-
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/your-plugin-id/`.
-
-## Improve code quality with eslint (optional)
-- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code. 
-- To use eslint with this project, make sure to install eslint from terminal:
-  - `npm install -g eslint`
-- To use eslint to analyze this project use this command:
-  - `eslint main.ts`
-  - eslint will then create a report with suggestions for code improvement by file and line number.
-- If your source code is in a folder, such as `src`, you can use eslint with this command to analyze all files in that folder:
-  - `eslint .\src\`
-
-## Funding URL
-
-You can include funding URLs where people who use your plugin can financially support it.
-
-The simple way is to set the `fundingUrl` field to your link in your `manifest.json` file:
-
-```json
-{
-    "fundingUrl": "https://buymeacoffee.com"
-}
-```
-
-If you have multiple URLs, you can also do:
-
-```json
-{
-    "fundingUrl": {
-        "Buy Me a Coffee": "https://buymeacoffee.com",
-        "GitHub Sponsor": "https://github.com/sponsors",
-        "Patreon": "https://www.patreon.com/"
-    }
-}
-```
-
-## API Documentation
-
-See https://github.com/obsidianmd/obsidian-api
+## Acknowledgements
+Special thanks to the Obsidian community for their continuous support and inspiration. This plugin is inspired by the principles of deliberate practice and the Pomodoro Technique to enhance productivity and skill development.
